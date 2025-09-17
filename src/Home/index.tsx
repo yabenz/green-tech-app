@@ -1,12 +1,20 @@
 
+import NavBar from '/src/Components/UI/NavBar.tsx'
+import Footer from '/src/Components/UI/Footer.tsx'
+import { HeroSection } from "./HeroSection"
+import { CTASection } from "./CTASection"
+
+
+
 const Home = () => {
   return (
-    <div>
-        <h1>
-            Welcome Home
-        </h1>
-      
-    </div>
+    <main className="w-full h-screen">
+      <NavBar />
+      <HeroSection />
+      <CTASection />
+      <Footer />
+
+    </main>
   )
 }
 

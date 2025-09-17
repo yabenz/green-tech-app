@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(0, 0%, 15%);
+  --primary: hsl(240, 100%, 58%);
+  --input: hsl(240, 100%, 92%);
+  --card: hsl(0, 0%, 99%);
+  --card-foreground: hsl(0, 0%, 20%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --muted-foreground: hsl(0, 0%, 45%);
+  --destructive: hsl(25, 20%, 65%);
+  --border: hsl(0, 0%, 92%);
+  --ring: hsl(264, 25%, 35%);
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: hsl(0, 0%, 8%);
+  --foreground: hsl(0, 0%, 98%);
+  --card: hsl(0, 0%, 12%);
+  --card-foreground: hsl(0, 0%, 95%);
+  --primary: hsl(264, 25%, 55%);
+  --primary-foreground: hsl(0, 0%, 8%);
+  --muted-foreground: hsl(0, 0%, 65%);
+  --destructive: hsl(25, 20%, 65%);
+  --border: hsl(0, 0%, 20%);
+  --input: hsl(0, 0%, 20%);
+  --ring: hsl(264, 25%, 55%);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
