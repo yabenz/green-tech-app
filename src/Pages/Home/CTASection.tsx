@@ -1,7 +1,7 @@
-import Button from "/src/components/UI/Button"
-import { Card, CardContent } from "/src/components/UI/Card"
-import { Input } from "/src/components/UI/input"
-import { Textarea } from "/src/components/UI/textarea"
+import Button from "@/components/UI/Button"
+import { Card, CardContent } from "@/components/UI/Card"
+import { Input } from "@/components/UI/input"
+import { Textarea } from "@/components/UI/textarea"
 import { ArrowRight, Calendar } from "lucide-react"
 
 export function CTASection() {

@@ -1,6 +1,6 @@
 
 import logo from '/public/logo.svg'
-import Button from '/src/components/UI/Button';
+import Button from '@/Components/UI/Button';
 
 
 const navLinks = [
