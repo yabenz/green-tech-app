@@ -1,4 +1,4 @@
-import Button from "@/Components/UI/Button"
+import Button from "@/Components/UI/Btn"
 import { Card, CardContent } from "@/Components/UI/Card"
 import { Input } from "@/Components/UI/input"
 import { Textarea } from "@/Components/UI/textarea"

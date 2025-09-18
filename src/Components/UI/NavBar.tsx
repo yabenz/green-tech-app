@@ -1,7 +1,7 @@
 
 import MobileNav from '@/Components/UI/MobileNav';
 import logo from '/public/logo.svg'
-import Button from '@/Components/UI/Button';
+import Button from '@/Components/UI/Btn';
 import type { NavLinks } from '@/types/types';
 
 
