@@ -7,8 +7,8 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/10"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(3,36,252,0.1),transparent_50%)]"></div>
 
-      <div className="container relative mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container relative mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center mx-10 ">
           <div className="space-y-10">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-primary/30 text-sm font-medium text-primary mb-6 shadow-sm">
