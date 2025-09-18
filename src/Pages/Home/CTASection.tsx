@@ -1,7 +1,7 @@
-import Button from "@/components/UI/Button"
-import { Card, CardContent } from "@/components/UI/Card"
-import { Input } from "@/components/UI/input"
-import { Textarea } from "@/components/UI/textarea"
+import Button from "@/Components/UI/Button"
+import { Card, CardContent } from "@/Components/UI/Card"
+import { Input } from "@/Components/UI/input"
+import { Textarea } from "@/Components/UI/textarea"
 import { ArrowRight, Calendar } from "lucide-react"
 
 export function CTASection() {
@@ -24,16 +24,16 @@ export function CTASection() {
                 <h3 className="text-2xl font-semibold text-foreground mb-6">Get Your Free Consultation</h3>
                 <form className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Input placeholder="First Name" className="bg-input border-border" />
-                    <Input placeholder="Last Name" className="bg-input border-border" />
+                    <Input placeholder="First Name" className=" border-border bg-amber-300" />
+                    <Input placeholder="Last Name" className=" border-border" />
                   </div>
-                  <Input type="email" placeholder="Work Email" className="bg-input border-border" />
-                  <Input placeholder="Company Name" className="bg-input border-border" />
-                  <Input placeholder="Phone Number" className="bg-input border-border" />
+                  <Input type="email" placeholder="Work Email" className=" border-border" />
+                  <Input placeholder="Company Name" className=" border-border" />
+                  <Input placeholder="Phone Number" className=" border-border" />
                   <Textarea
                     placeholder="Tell us about your current challenges and goals..."
                     rows={4}
-                    className="bg-input border-border"
+                    className="border-border bg-primary/10 "
                   />
 
                   <Button label="Start free trial" variant="primary" onClick={() => alert('Secondary clicked')} className="flex justify-center w-full" />

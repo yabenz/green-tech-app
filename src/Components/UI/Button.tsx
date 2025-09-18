@@ -2,11 +2,11 @@ type ButtonProps = {
   label: string;
   onClick: () => void;
   variant?: 'primary' | 'secondary'; // optional, defaults to primary
-  className: string;
+  className?: string;
 };
 
 export default function Button({ label, onClick, variant = 'primary', className= ''}: ButtonProps) {
-  const baseStyles = "mx-1 my-0.5 px-4 py-2 font-semibold rounded-md shadow transition duration-200 border cursor-pointer " + className;
+  const baseStyles = "mx-1 my-0.5 px-4 py-2 font-semibold rounded-md shadow transition duration-200 border cursor-pointer whitespace-nowrap h-fit " + className;
 
   const variantStyles =
     variant === 'primary'
