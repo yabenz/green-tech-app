@@ -1,8 +1,8 @@
 [
   {
     "name": "Adam",
-    "email": "adam@coexample.com",
-    "password": "123123123"
+    "email": "adam@example.com",
+    "password": "11223311"
   },
   {
     "name": "dodo2",
@@ -10,98 +10,8 @@
     "password": "123123123"
   },
   {
-    "name": "dodo2",
-    "email": "adam@coexample.com",
-    "password": "123123123"
-  },
-  {
-    "name": "dodo2",
-    "email": "adam@coexample.com",
-    "password": "123123123"
-  },
-  {
-    "name": "dodo2",
-    "email": "adam@coexample.com",
-    "password": "123123123"
-  },
-  {
-    "name": "dodo2",
-    "email": "adam@coexample.com",
-    "password": "123123123"
-  },
-  {
-    "name": "dodo2",
-    "email": "adam@coexample.com",
-    "password": "123123123"
-  },
-  {
-    "name": "dodo2",
-    "email": "adam@coexample.com",
-    "password": "123123123"
-  },
-  {
-    "name": "dodo2",
-    "email": "adam@coexample.com",
-    "password": "123123123"
-  },
-  {
-    "name": "dodo2",
-    "email": "adam@coexample.com",
-    "password": "123123123"
-  },
-  {
-    "name": "dodo2",
-    "email": "adam@coexample.com",
-    "password": "123123123"
-  },
-  {
-    "name": "dodo2",
-    "email": "adam@coexample.com",
-    "password": "123123123"
-  },
-  {
-    "name": "dodo2",
-    "email": "adam@coexample.com",
-    "password": "123123123"
-  },
-  {
-    "name": "John Doe",
-    "email": "john@example.com",
-    "password": "securepassword123"
-  },
-  {
-    "name": "koko",
-    "email": "john@example.com",
-    "password": "securepassword123"
-  },
-  {
-    "name": "koko",
-    "email": "john@example.com",
-    "password": "securepassword123"
-  },
-  {
-    "name": "koko",
-    "email": "john@example.com",
-    "password": "securepassword123"
-  },
-  {
-    "name": "koko",
-    "email": "john@example.com",
-    "password": "securepassword123"
-  },
-  {
-    "name": "koko",
-    "email": "john@example.com",
-    "password": "securepassword123"
-  },
-  {
-    "name": "koko",
-    "email": "john@example.com",
-    "password": "securepassword123"
-  },
-  {
-    "name": "koko",
-    "email": "john@example.com",
-    "password": "securepassword123"
+    "name": "Alice",
+    "email": "a@wwwseedreww.com",
+    "password": "12345678"
   }
 ]

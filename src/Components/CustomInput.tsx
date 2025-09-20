@@ -35,6 +35,7 @@ const CustomInput = ({ control, name, label, placeholder }: CustomInputProps) =>
                         <FormControl>
 
                             <Input
+                                id={name}                // set unique id here
                                 placeholder={placeholder}
                                 className='input-class'
                                 {...field}

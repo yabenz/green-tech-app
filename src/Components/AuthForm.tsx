@@ -5,36 +5,69 @@ import logo from '/public/logo.svg'
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { tuple, z } from "zod"
 
-import { Button } from "@/Components/UI/button"
+import { Button } from "@/Components/UI/Button"
 import { Form } from "@/Components/UI/form"
 import CustomInput from './CustomInput'
 import { authFormSchema } from '@/lib/utils'
-import { Loader2 } from 'lucide-react'
+import { BadgeCheck, Loader2 } from 'lucide-react'
+
+import { useAuth } from '@/utils/useAuth'
+import { useNavigate } from 'react-router-dom';
 
 const AuthForm = ({ type }: { type: string }) => {
 
     const [user, setUser] = useState(null)
     const [isLoading, setIsloading] = useState<boolean>(false)
+    const { signup, signin } = useAuth()
 
-    // 1. Define your form.
+    const navigate = useNavigate()
+
     const form = useForm<z.infer<typeof authFormSchema>>({
         resolver: zodResolver(authFormSchema),
         defaultValues: {
+            name: "",
             email: "",
             password: ""
         },
     })
 
-    // 2. Define a submit handler.
+
     async function onSubmit(values: z.infer<typeof authFormSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
+        // e.preventDefault()
+
+        // console.log('values', values)
 
         setIsloading(true)
-        await wait(2000)
-        window.alert('Signed in')
+
+
+        if (type === 'signup'){
+
+            const resData = await signup({ name: 'Alice', email: 'a@wwwseedreww.com', password: '12345678' })
+    
+            if(resData?.status === 201){
+                window.alert('Signed up!')
+                navigate('/signin')
+            }else if (resData.includes('registered')){
+                console.log('registered: ', resData)
+                window.alert(resData)
+            }else{
+                console.log('error: ', resData)
+            }
+
+        }else{
+
+            const resData = await signin({ email: "adam@coexample.com", password: "123123123" })
+            console.log('resData: ', resData)
+            
+            if (resData?.status === 200){
+                console.log('resData: ', resData?.user)
+
+                setUser(resData.data.user)
+            }
+        }
+        
         setIsloading(false)
     }
 
@@ -45,17 +78,16 @@ const AuthForm = ({ type }: { type: string }) => {
         await new Promise((resolve) => setTimeout(resolve, ms))
     }
 
-
-
-
     return (
         <div className='flex flex-center h-dvh bg-[var(--ghost)]'>
             <div className='flex flex-col w-full max-w-100 py-10 bg-white p-10 rounded-2xl mt-[-5%]'>
                 <header className="flex-col gap-3">
-                    <div className='flex-center gap-2'>
-                        <a href='/'><img src={logo} className='max-w-[43px]' /></a>
-                        <div className='font-bold text-primary'>GreenTechIO</div>
-                    </div>
+                    <a href='/'>
+                        <div className='flex-center gap-2'>
+                            <img src={logo} className='max-w-[43px]' />
+                            <div className='font-bold text-primary'>GreenTechIO</div>
+                        </div>
+                    </a>
                     <div className="flex-col py-4">
                         <h1 className='text-24 lg:text-36 font-bold text-gray-900'>
                             {type === 'signin'
@@ -68,26 +100,30 @@ const AuthForm = ({ type }: { type: string }) => {
                     </div>
                 </header>
                 {user
-                    ? <div> Signed success!</div>
+                    ? <div className='flex-col flex-center w-full gap-4 p-10'>
+                        <BadgeCheck color="#00cccc" size={54} className='w-full'/>
+                        <b className='opacity-70'> You're now signed in!</b>
+                        <a href='/' className='form-link'>Go to homepage</a>
+                    </div>
                     : <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 border-">
-                            {type === 'signin' && <CustomInput control={form.control} label="Name" name="name" placeholder="Enter your name" />}
-                            <CustomInput control={form.control} label="Email" name="email" placeholder="Enter your email" />
+                            {type == 'signin' && <CustomInput control={form.control} label="Name" name="name" placeholder="Enter your name" />}                            <CustomInput control={form.control} label="Email" name="email" placeholder="Enter your email" />
                             <CustomInput control={form.control} label="Password" name="password" placeholder="Enter your password" />
                             <Button type="submit" className='button-form w-full mt-4' disabled={isLoading}>
                                 {isLoading ?
-                                <>
-                                <Loader2 size={20} className='animate-spin' />
-                                Loading...
-                                </>
-                                : type === 'signin' ? <div>Sign In </div> : <div>Sign Up </div>
+                                    <>
+                                        <Loader2 size={20} className='animate-spin' />
+                                        Loading...
+                                    </>
+                                    : type === 'signin' ? <>Sign In</> : <>Sign Up</>
                                 }
-                                </Button>
+                            </Button>
                         </form>
 
-                        {type === 'signup' 
-                        ? <div className='flex-center pt-4'> Already have an account ? <a href='/signin' className='form-link'> &nbsp; Sign in </a> </div>
-                        : <div className='flex-center pt-4'> Don't have an account ? <a href='/signup' className='form-link'>&nbsp; Sign up </a></div>}
+                        {type === 'signup'
+                            ? <div className='flex-center py-2'> Already have an account ? <a href='/signin' className='form-link'> &nbsp; Sign in </a> </div>
+                            : <div className='flex-center py-2'> Don't have an account ? <a href='/signup' className='form-link'>&nbsp; Sign up </a></div>
+                            }
                     </Form>
                 }
             </div>
