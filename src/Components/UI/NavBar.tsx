@@ -3,7 +3,7 @@ import MobileNav from '@/Components/UI/MobileNav';
 import logo from '/public/logo.svg'
 import Button from '@/Components/UI/Btn';
 import type { NavLinks } from '@/types/types';
-import { useNavigate } from 'react-router-dom';
+
 
 
 const navLinks: NavLinks = [
@@ -17,7 +17,6 @@ const navLinks: NavLinks = [
 
 export default function NavBar() {
 
-      const navigate = useNavigate();
 
     return (
         <div className="flex justify-center w-full bg-primary p-3" >
