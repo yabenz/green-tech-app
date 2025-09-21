@@ -15,6 +15,7 @@ import { useAuth } from '@/utils/useAuth'
 import { useNavigate } from 'react-router-dom';
 import type { User } from '@/types/types'
 import { signUpSchema, signInSchema } from '@/lib/utils'
+import { useAuthStore } from '@/stores/authStore'
 
 type AuthFormData = z.infer<typeof signUpSchema> | z.infer<typeof signInSchema>
 
@@ -22,6 +23,7 @@ const AuthForm = ({ type }: { type: string }) => {
 
     const navigate = useNavigate()
     const [user, setUser] = useState<User | null>(null)
+    const [message, setMessage] = useState('')
     const [isLoading, setIsloading] = useState<boolean>(false)
     const { signup, signin } = useAuth()
 
@@ -39,36 +41,46 @@ const AuthForm = ({ type }: { type: string }) => {
 
     async function onSubmit(formData: AuthFormData) {
 
+        setMessage('')
         console.log('formData', formData)
 
         setIsloading(true)
         await wait(1000)
 
+        // Handling Sign Up
         if (type === 'signup') {
             const resData = await signup(formData as z.infer<typeof signUpSchema>)
 
             if (resData?.status === 201) {
                 window.alert("You're now signed up!")
                 navigate('/signin')
-            } else if (resData.includes('registered')) {
-                console.log('registered: ', resData)
-                window.alert(resData)
+            } 
+            if (resData.includes('registered')) {
+                setMessage(resData)
             } else {
                 console.log('error: ', resData)
             }
 
         } else {
-
+            
+            // Handling Sign In
             const resData = await signin(formData as z.infer<typeof signInSchema>)
             console.log('resData: ', resData)
 
             if (resData?.status === 200) {
-                console.log('resData: ', resData?.user)
+
+                const { name, email } = resData?.data.user
+                useAuthStore.getState().setSessionToken('token123')
+                useAuthStore.getState().setUserData({ name, email })
 
                 setUser(resData.data.user)
             }
+            if (resData.includes('credentials')) {
+                setMessage(resData)
+            } else {
+                console.log('error: ', resData)
+            }
         }
-
         setIsloading(false)
     }
 
@@ -110,6 +122,8 @@ const AuthForm = ({ type }: { type: string }) => {
                             {type === 'signup' && <CustomInput control={form.control} label="Name" name="name" placeholder="Enter your name" />}
                             <CustomInput control={form.control} label="Email" name="email" placeholder="Enter your email" />
                             <CustomInput control={form.control} label="Password" name="password" placeholder="Enter your password" />
+
+                            {message !== '' && <div className='bg-red-200 text-red-700 py-1 px-2 rounded-sm'>{message}</div>}
                             <Button type="submit" className='button-form w-full mt-4' disabled={isLoading}>
                                 {isLoading ?
                                     <>
