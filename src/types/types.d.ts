@@ -4,3 +4,9 @@ export type NavLink = {
 };
 
 export type NavLinks = NavLink[] 
+
+
+declare type User = {
+  name: string;
+  email: string;
+};

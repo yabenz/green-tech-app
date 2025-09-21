@@ -1,6 +1,4 @@
-
 import AuthForm from '@/Components/AuthForm'
-
 
 const SigUp = () => {
   return (

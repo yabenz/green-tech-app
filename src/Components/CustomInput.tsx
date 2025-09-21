@@ -3,7 +3,7 @@ import {
     FormField,
     FormLabel,
     FormMessage,
-} from "@/components/ui/form"
+} from "@/Components/UI/form"
 
 import type { Control, FieldPath } from "react-hook-form"
 import { Input } from '@/Components/UI/input'
@@ -35,6 +35,7 @@ const CustomInput = ({ control, name, label, placeholder }: CustomInputProps) =>
                         <FormControl>
 
                             <Input
+                                id={name}                // set unique id here
                                 placeholder={placeholder}
                                 className='input-class'
                                 {...field}
