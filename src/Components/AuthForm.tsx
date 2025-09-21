@@ -1,80 +1,79 @@
 
-import { useState } from 'react'
 import logo from '/public/logo.svg'
 
-
+import { useState } from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { tuple, z } from "zod"
+import { z } from "zod"
 
 import { Button } from "@/Components/UI/Button"
 import { Form } from "@/Components/UI/form"
 import CustomInput from './CustomInput'
-import { authFormSchema } from '@/lib/utils'
 import { BadgeCheck, Loader2 } from 'lucide-react'
 
 import { useAuth } from '@/utils/useAuth'
 import { useNavigate } from 'react-router-dom';
+import type { User } from '@/types/types'
+import { signUpSchema, signInSchema } from '@/lib/utils'
+
+type AuthFormData = z.infer<typeof signUpSchema> | z.infer<typeof signInSchema>
 
 const AuthForm = ({ type }: { type: string }) => {
 
-    const [user, setUser] = useState(null)
+    const navigate = useNavigate()
+    const [user, setUser] = useState<User | null>(null)
     const [isLoading, setIsloading] = useState<boolean>(false)
     const { signup, signin } = useAuth()
 
-    const navigate = useNavigate()
+    const formSchema = type=== 'signup' ? signUpSchema : signInSchema
 
-    const form = useForm<z.infer<typeof authFormSchema>>({
-        resolver: zodResolver(authFormSchema),
-        defaultValues: {
-            name: "",
-            email: "",
-            password: ""
-        },
-    })
+    const defaultValues =
+        type === 'signup'
+            ? { name: '', email: '', password: '' }
+            : { email: '', password: '' };
 
+    const form = useForm({
+        resolver: zodResolver(formSchema),
+        defaultValues,
+    });
 
-    async function onSubmit(values: z.infer<typeof authFormSchema>) {
-        // e.preventDefault()
+    async function onSubmit(formData: AuthFormData) {
 
-        // console.log('values', values)
+        console.log('formData', formData)
 
         setIsloading(true)
+        await wait(1000)
 
+        if (type === 'signup') {
+            const resData = await signup(formData as z.infer<typeof signUpSchema>)
 
-        if (type === 'signup'){
-
-            const resData = await signup({ name: 'Alice', email: 'a@wwwseedreww.com', password: '12345678' })
-    
-            if(resData?.status === 201){
-                window.alert('Signed up!')
+            if (resData?.status === 201) {
+                window.alert("You're now signed up!")
                 navigate('/signin')
-            }else if (resData.includes('registered')){
+            } else if (resData.includes('registered')) {
                 console.log('registered: ', resData)
                 window.alert(resData)
-            }else{
+            } else {
                 console.log('error: ', resData)
             }
 
-        }else{
+        } else {
 
-            const resData = await signin({ email: "adam@coexample.com", password: "123123123" })
+            const resData = await signin(formData as z.infer<typeof signInSchema>)
             console.log('resData: ', resData)
-            
-            if (resData?.status === 200){
+
+            if (resData?.status === 200) {
                 console.log('resData: ', resData?.user)
 
                 setUser(resData.data.user)
             }
         }
-        
+
         setIsloading(false)
     }
 
 
     async function wait(ms: number) {
-
-        console.log('Signin up...');
         await new Promise((resolve) => setTimeout(resolve, ms))
     }
 
@@ -101,13 +100,15 @@ const AuthForm = ({ type }: { type: string }) => {
                 </header>
                 {user
                     ? <div className='flex-col flex-center w-full gap-4 p-10'>
-                        <BadgeCheck color="#00cccc" size={54} className='w-full'/>
+                        <BadgeCheck color="#00cccc" size={54} className='w-full' />
                         <b className='opacity-70'> You're now signed in!</b>
-                        <a href='/' className='form-link'>Go to homepage</a>
+                        <a href='/dashboard' className='form-link'>&rarr; Go to your Dashboard </a>
                     </div>
                     : <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 border-">
-                            {type == 'signin' && <CustomInput control={form.control} label="Name" name="name" placeholder="Enter your name" />}                            <CustomInput control={form.control} label="Email" name="email" placeholder="Enter your email" />
+
+                            {type === 'signup' && <CustomInput control={form.control} label="Name" name="name" placeholder="Enter your name" />}
+                            <CustomInput control={form.control} label="Email" name="email" placeholder="Enter your email" />
                             <CustomInput control={form.control} label="Password" name="password" placeholder="Enter your password" />
                             <Button type="submit" className='button-form w-full mt-4' disabled={isLoading}>
                                 {isLoading ?
@@ -123,7 +124,7 @@ const AuthForm = ({ type }: { type: string }) => {
                         {type === 'signup'
                             ? <div className='flex-center py-2'> Already have an account ? <a href='/signin' className='form-link'> &nbsp; Sign in </a> </div>
                             : <div className='flex-center py-2'> Don't have an account ? <a href='/signup' className='form-link'>&nbsp; Sign up </a></div>
-                            }
+                        }
                     </Form>
                 }
             </div>

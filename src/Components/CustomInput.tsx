@@ -3,7 +3,7 @@ import {
     FormField,
     FormLabel,
     FormMessage,
-} from "@/components/ui/form"
+} from "@/Components/UI/form"
 
 import type { Control, FieldPath } from "react-hook-form"
 import { Input } from '@/Components/UI/input'
