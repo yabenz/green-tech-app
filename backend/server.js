@@ -86,3 +86,19 @@ app.post('/api/signin', (req, res) => {
         res.status(401).json({ error: 'Invalid credentials' });
     }
 });
+
+
+/**
+ * Route: GET /data
+ * Description: Returns sustainability data from file.json
+ */
+app.get('/data', (req, res) => {
+    try {
+        const rawData = fs.readFileSync('./db/data.json', 'utf-8');
+        const jsonData = JSON.parse(rawData);
+        res.status(200).json(jsonData);
+    } catch (err) {
+        console.error('Error reading file.json:', err);
+        res.status(500).json({ error: 'Failed to load data' });
+    }
+});
