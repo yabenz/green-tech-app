@@ -53,13 +53,17 @@ function MobileNav({ links, type = '' }: MobileNavProps) {
                                     ))}
                                 </ul>
 
-                                {type === 'user' &&
+                                {type === 'user' ?
 
                                     <button onClick={handleLogout} className="flex justify-center items-center gap-2 text-xl text-primary">
                                         Log out
                                         <LogOut />
                                     </button>
 
+                                    :
+                                    <div className="flex-center w-full">
+                                        <a href='/signin' className="form-link text-xl">Sign In</a>
+                                    </div>
                                 }
                             </div>
                         </SheetDescription>

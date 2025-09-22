@@ -16,8 +16,7 @@ const navLinks: NavLinks = [
 
 
 export default function NavBar() {
-
-
+    
     return (
         <div className="flex justify-center w-full bg-primary p-3" >
             <nav className="flex items-center px-4 w-full max-w-[var(--maxpagewidth)] lg:mx-20 sm:mx-auto ">

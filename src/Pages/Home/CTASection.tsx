@@ -24,16 +24,16 @@ export function CTASection() {
                 <h3 className="text-2xl font-semibold text-foreground mb-6">Get Your Free Consultation</h3>
                 <form className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Input placeholder="First Name" className=" border-border" />
-                    <Input placeholder="Last Name" className=" border-border" />
+                    <Input placeholder="First Name" className=" border-border  bg-primary/5 " />
+                    <Input placeholder="Last Name" className=" border-border  bg-primary/5 " />
                   </div>
-                  <Input type="email" placeholder="Work Email" className=" border-border" />
-                  <Input placeholder="Company Name" className=" border-border" />
-                  <Input placeholder="Phone Number" className=" border-border" />
+                  <Input type="email" placeholder="Work Email" className=" border-border  bg-primary/5 " />
+                  <Input placeholder="Company Name" className=" border-border   bg-primary/5 " />
+                  <Input placeholder="Phone Number" className=" border-border  bg-primary/5 " />
                   <Textarea
                     placeholder="Tell us about your current challenges and goals..."
                     rows={4}
-                    className="border-border bg-primary/10 "
+                    className="border-border  bg-primary/5 "
                   />
 
                   <Button label="Start free trial" variant="primary" onClick={() => alert('Secondary clicked')} className="flex justify-center w-full" />
