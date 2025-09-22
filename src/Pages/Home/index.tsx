@@ -1,6 +1,6 @@
 
-import NavBar from '@/Components/UI/NavBar.tsx'
-import Footer from '@/Components/UI/Footer.tsx'
+import NavBar from '@/components/ui/NavBar.tsx'
+import Footer from '@/components/ui/Footer.tsx'
 import { HeroSection } from "./HeroSection"
 import { CTASection } from "./CTASection"
 

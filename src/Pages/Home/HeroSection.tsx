@@ -1,5 +1,5 @@
 import { Zap, TrendingUp, Shield } from "lucide-react"
-import Button from "@/Components/UI/Btn"
+import Button from "@/components/ui/Btn"
 
 export function HeroSection() {
   return (
