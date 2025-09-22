@@ -13,7 +13,7 @@ const DoughnutChart = ({ score }: DoughnutChartProps) => {
     datasets: [
       {
         data: [score, 100 - score],
-        backgroundColor: ["#4CAF50", "#E0E0E0"],
+        backgroundColor: ["#219161", "#E0E0E0"],
         borderWidth: 0,
         cutout: "70%",
       },

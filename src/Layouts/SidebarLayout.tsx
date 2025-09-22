@@ -1,5 +1,6 @@
 import MobileNavUser from "@/Components/MobileNavUser";
 import Sidebar from "@/Components/Sidebar";
+import FooterUser from "@/Components/UI/FooterUser";
 import { useAuthStore } from "@/stores/authStore";
 import { MessageCircleWarning } from "lucide-react";
 import { Outlet } from "react-router-dom";
@@ -12,9 +13,9 @@ export default function SidebarLayout() {
     if (!userData) {
         return (
             <div className="flex-col flex-center gap-4 h-screen bg-gray-50">
-                <div className="flex-col flex-center gap-4 bg-white rounded-2xl p-20">
+                <div className="flex-col flex-center gap-4 bg-white rounded-2xl py-20 px-40">
                     <MessageCircleWarning className="text-red-400 " size={55} />
-                    <b>You're not logged in!</b>
+                    <b>You are not logged in!</b>
                     <p className="opacity-30">-------</p>
                     <a href='/signin' className="form-link">Sign in</a>
                     or
@@ -25,17 +26,21 @@ export default function SidebarLayout() {
     }
 
     return (
-        <main className="flex h-screen w-full font-inter">
-            <Sidebar user={userData} />
-            <div className="flex flex-col size-full">
-                <div className="root-layout">
-                    <a href="/">
-                        <img src="public/logo.svg" className="w-9" alt="logo" />
-                    </a>
-                    <MobileNavUser user={userData} />
+        <main>
+            <div  className="flex h-fit w-full font-inter">
+                <Sidebar user={userData} />
+                <div className="flex flex-col size-full">
+                    <div className="root-layout">
+                        <a href="/">
+                            <img src="public/logo.svg" className="w-9" alt="logo" />
+                        </a>
+                        <MobileNavUser user={userData} />
+                    </div>
+                    <Outlet /> {/* Renders the child route */}
                 </div>
-                <Outlet /> {/* Renders the child route */}
             </div>
+            <FooterUser />
+
         </main>
     );
 }

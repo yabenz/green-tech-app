@@ -24,7 +24,7 @@ export function CTASection() {
                 <h3 className="text-2xl font-semibold text-foreground mb-6">Get Your Free Consultation</h3>
                 <form className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Input placeholder="First Name" className=" border-border bg-amber-300" />
+                    <Input placeholder="First Name" className=" border-border" />
                     <Input placeholder="Last Name" className=" border-border" />
                   </div>
                   <Input type="email" placeholder="Work Email" className=" border-border" />

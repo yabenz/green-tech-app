@@ -170,5 +170,9 @@
    .sidebar-label {
     @apply text-[16px] font-medium text-black/89 max-lg:hidden;
   }
+
+  .card{
+     @apply flex flex-col gap-6 border-1 w-fit p-8 rounded-2xl bg-white;
+  }
 }
 

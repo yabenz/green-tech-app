@@ -10,7 +10,7 @@ type CardDashProps = {
 
 const CardDash = ({ title, date, value, unit }: CardDashProps) => {
   return (
-    <div className="border-1 flex-1 min-w-[225px] h-[135px] p-3 rounded-2xl flex flex-col justify-between bg-white">
+    <div className="flex-1 min-w-[225px] h-[135px] p-3 border-1 bg-white  rounded-2xl flex flex-col justify-between ">
       <div>
         <div className="text-sm font-semibold">{title}</div>
         <div className="text-xs text-gray-500 flex gap-1 mt-1"><CalendarIcon size={13}/>{date}</div>

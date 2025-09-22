@@ -1,12 +1,14 @@
-import DoughnutChart from "@/Components/DoughnutChart"
+import DoughnutChart from "@/components/DoughnutChart"
 
 
 
 const SustainabilityScoreBox = () => {
   return (
-    <div className="flex flex-col gap-6 border-1 w-full p-8 rounded-2xl bg-white">
-      <h2>Sustainability Score</h2>
-      <DoughnutChart score={75} />
+    <div className=" w-full mx-auto p-3 border-1 bg-white rounded-2xl flex justify-center items-center flex-1">
+      <div className="w-fit">
+        <h2 className="mb-4">Sustainability Score</h2>
+        <DoughnutChart score={75} />
+      </div>
     </div>
   )
 }
