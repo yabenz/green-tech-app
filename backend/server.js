@@ -92,7 +92,7 @@ app.post('/api/signin', (req, res) => {
  * Route: GET /data
  * Description: Returns sustainability data from file.json
  */
-app.get('/data', (req, res) => {
+app.get('/api/data', (req, res) => {
     try {
         const rawData = fs.readFileSync('./db/data.json', 'utf-8');
         const jsonData = JSON.parse(rawData);
