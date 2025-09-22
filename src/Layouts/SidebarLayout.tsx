@@ -1,6 +1,6 @@
-import MobileNavUser from "@/Components/MobileNavUser";
-import Sidebar from "@/Components/Sidebar";
-import FooterUser from "@/Components/UI/FooterUser";
+import MobileNavUser from "@/components/MobileNavUser";
+import Sidebar from "@/components/Sidebar";
+import FooterUser from "@/components/ui/FooterUser";
 import { useAuthStore } from "@/stores/authStore";
 import { MessageCircleWarning } from "lucide-react";
 import { Outlet } from "react-router-dom";

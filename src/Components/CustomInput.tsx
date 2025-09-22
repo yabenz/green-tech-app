@@ -3,10 +3,10 @@ import {
     FormField,
     FormLabel,
     FormMessage,
-} from "@/Components/UI/form"
+} from "@/components/ui/form"
 
 import type { Control, FieldPath } from "react-hook-form"
-import { Input } from '@/Components/UI/input'
+import { Input } from '@/components/ui/input'
 import type { authFormSchema } from "@/lib/utils"
 import type z from "zod"
 

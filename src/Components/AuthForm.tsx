@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
-import { Form } from "@/Components/UI/form"
+import { Form } from "@/components/ui/form"
 import CustomInput from './CustomInput'
 import { BadgeCheck, Loader2, MessageCircleWarning } from 'lucide-react'
 

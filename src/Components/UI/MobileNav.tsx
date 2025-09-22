@@ -5,7 +5,7 @@ import {
     SheetHeader,
     SheetTitle,
     SheetTrigger,
-} from "@/Components/UI/sheet"
+} from "@/components/ui/sheet"
 import type { NavLinks } from "@/types/types";
 
 import { LogOut, Menu } from 'lucide-react';

@@ -1,6 +1,6 @@
 import type { NavLinks, User } from '@/types/types'
 import React from 'react'
-import MobileNav from '@/Components/UI/MobileNav'
+import MobileNav from '@/components/ui/MobileNav'
 
 type MobileNavProps ={
     user: User | null
