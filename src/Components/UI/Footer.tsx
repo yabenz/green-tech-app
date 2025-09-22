@@ -104,7 +104,7 @@ export default function Footer() {
                 <line />
 
                 <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 pt-4">
-                    <div className="text-muted-foreground text-sm">© 2025 GreenTech. All rights reserved.</div>
+                    <div className="text-muted-foreground text-sm">© 2025 GreenTechIO. All rights reserved.</div>
                     <div className="flex space-x-6 text-sm">
                         <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                             Privacy Policy

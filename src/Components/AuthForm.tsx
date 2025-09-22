@@ -6,10 +6,10 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { Button } from "@/Components/UI/Button"
+import { Button } from "@/components/ui/button"
 import { Form } from "@/Components/UI/form"
 import CustomInput from './CustomInput'
-import { BadgeCheck, Loader2 } from 'lucide-react'
+import { BadgeCheck, Loader2, MessageCircleWarning } from 'lucide-react'
 
 import { useAuth } from '@/utils/useAuth'
 import { useNavigate } from 'react-router-dom';
@@ -26,6 +26,7 @@ const AuthForm = ({ type }: { type: string }) => {
     const [message, setMessage] = useState('')
     const [isLoading, setIsloading] = useState<boolean>(false)
     const { signup, signin } = useAuth()
+    const userData = useAuthStore(state => state.userData)
 
     const formSchema = type=== 'signup' ? signUpSchema : signInSchema
 
@@ -87,6 +88,21 @@ const AuthForm = ({ type }: { type: string }) => {
 
     async function wait(ms: number) {
         await new Promise((resolve) => setTimeout(resolve, ms))
+    }
+
+
+
+        if (userData && !user) {
+        return (
+            <div className="flex-col flex-center gap-4 h-screen bg-gray-50">
+                <div className="flex-col flex-center gap-4 bg-white rounded-2xl py-20 px-40">
+                    <MessageCircleWarning className="text-red-400 " size={55} />
+                    <b>You are already logged in!</b>
+                    <p className="opacity-30">-------</p>
+                    <a href='/dashboard' className='form-link'>&rarr; Go to your Dashboard </a>
+                </div>
+            </div>
+            )
     }
 
     return (
